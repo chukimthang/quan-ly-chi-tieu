@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::group(['prefix' => 'category', 'as' => 'category.'], function() {
+    Route::get('/', [
+        'as' => 'index',
+        'uses' => 'CategoryController@index'
+    ]);
+});

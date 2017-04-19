@@ -2,7 +2,7 @@
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li>
-                <a href="#">Danh mục</a>
+                <a href="{{ route('category.index') }}">Danh mục</a>
             </li>
         </ul>
     </div>
