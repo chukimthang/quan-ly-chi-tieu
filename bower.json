@@ -1,0 +1,29 @@
+{
+  "name": "quan-ly-chi-tieu",
+  "description": "",
+  "main": "",
+  "authors": [
+    "chukimthang94 <chukimthang94@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/chukimthang/quan-ly-chi-tieu",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+   "dependencies": {
+    "font-awesome": "fontawesome#^4.7.0",
+    "ckeditor": "#full/4.3.3",
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-datepicker": "^1.6.4",
+    "datatables.net": "^1.10.13",
+    "datatables.net-dt": "^1.10.13",
+    "sweetalert": "^1.1.3"
+  }
+}
