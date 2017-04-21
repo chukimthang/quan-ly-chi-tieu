@@ -20,6 +20,28 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'CategoryController@index'
         ]);
     });
+
+    Route::group(['prefix' => 'expense', 'as' => 'expense.'], function() {
+        Route::get('/', [
+            'as' => 'index',
+            'uses' => 'ExpenseController@index'
+        ]);
+
+        Route::post('addAjax', [
+            'as' => 'addAjax',
+            'uses' => 'ExpenseController@postAddAjax'
+        ]);
+
+        Route::post('updateAjax', [
+            'as' => 'updateAjax',
+            'uses' => 'ExpenseController@postUpdateAjax'
+        ]);
+
+        Route::post('deleteAjax', [
+            'as' => 'deleteAjax',
+            'uses' => 'ExpenseController@postDeleteAjax'
+        ]);
+    });
 });
 
 Auth::routes();
