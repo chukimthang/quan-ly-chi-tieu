@@ -2,7 +2,10 @@
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li>
-                <a href="{{ route('category.index') }}">Danh mục</a>
+                <a href="{{ route('category.index') }}">Chuyên mục</a>
+            </li>
+            <li>
+                <a href="{{ route('expense.index') }}">Chi tiêu</a>
             </li>
         </ul>
     </div>

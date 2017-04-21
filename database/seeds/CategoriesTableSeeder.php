@@ -14,8 +14,11 @@ class CategoriesTableSeeder extends Seeder
         $category = [
             'Thịt cá',
             'Rau, củ, quả',
+            'Gia vị',
             'Đồ gia dụng',
-            'Ăn vặt'
+            'Ăn vặt',
+            'Tiền phạt',
+            'Khác'
         ];
 
         for ($i = 0; $i < count($category); $i++) { 

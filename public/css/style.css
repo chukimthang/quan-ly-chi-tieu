@@ -436,3 +436,26 @@ table.dataTable thead .sorting:after {
 .form-group.edit-category {
     padding: 2px 80px;
 }
+
+.title {
+    color: #337ab7;
+}
+
+.modal .modal-body {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.modal .modal-footer {
+    padding-right: 15%;
+}
+
+.modal .modal-header {
+    padding-top: 30px;
+}
+
+.form-error {
+   padding-left: 15%;
+   padding-top: 10px;
+   color: red;
+}
