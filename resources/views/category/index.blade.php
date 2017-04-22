@@ -3,7 +3,7 @@
 @section('content')
 <div id="page-wrapper">
     <div class="row">
-        <h3 class="page-header title" style="margin-left: 2%;">Chuyên Mục</h3> 
+        <h3 class="page-header title" style="margin-left: 2%;">Chuyên mục</h3> 
 
         <div class="col-lg-11">
             @if (count($categories))

@@ -52,6 +52,23 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'ExpenseController@postFilterCategoryDate'
         ]);
     });
+
+    Route::group(['prefix' => 'collect', 'as' => 'collect.'], function() {
+        Route::get('/', [
+            'as' => 'index',
+            'uses' => 'CollectController@index'
+        ]);
+
+        Route::post('addAjax', [
+            'as' => 'addAjax',
+            'uses' => 'CollectController@postAddAjax'
+        ]);
+
+        Route::post('deleteAjax', [
+            'as' => 'deleteAjax',
+            'uses' => 'CollectController@postDeleteAjax'
+        ]);
+    });
 });
 
 Auth::routes();

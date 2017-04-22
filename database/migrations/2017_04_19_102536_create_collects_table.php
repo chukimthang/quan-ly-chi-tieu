@@ -16,7 +16,6 @@ class CreateCollectsTable extends Migration
         Schema::create('collects', function (Blueprint $table) {
             $table->increments('id');
             $table->float('price', 10, 2)->unsigned()->default(0);
-            $table->text('description');
             $table->timestamps();
         });
     }
