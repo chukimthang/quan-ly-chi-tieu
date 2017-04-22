@@ -41,6 +41,16 @@ Route::group(['middleware' => 'auth'], function() {
             'as' => 'deleteAjax',
             'uses' => 'ExpenseController@postDeleteAjax'
         ]);
+
+        Route::post('filterCategory', [
+            'as' => 'filterCategory',
+            'uses' => 'ExpenseController@postFilterCategory'
+        ]);
+
+        Route::post('filterCategoryDate', [
+            'as' => 'filterCategoryDate',
+            'uses' => 'ExpenseController@postFilterCategoryDate'
+        ]);
     });
 });
 

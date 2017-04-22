@@ -21,7 +21,7 @@
     "ckeditor": "#full/4.3.3",
     "jquery": "^3.1.1",
     "bootstrap": "^3.3.7",
-    "bootstrap-datepicker": "^1.6.4",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.43",
     "datatables.net": "^1.10.13",
     "datatables.net-dt": "^1.10.13",
     "sweetalert": "^1.1.3"
