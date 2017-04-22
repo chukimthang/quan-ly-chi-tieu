@@ -459,3 +459,8 @@ table.dataTable thead .sorting:after {
    padding-top: 10px;
    color: red;
 }
+
+table.expense-filter {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}

@@ -10,6 +10,8 @@ function expense() {
     current.add();
     current.delete();
     current.update();
+    current.filterCategory();
+    current.filterCategoryDate();
   }
 
   this.add = function() {
@@ -123,6 +125,47 @@ function expense() {
       })
       .fail(function() {
         alert('Lỗi !');
+      });
+    });
+  }
+
+  this.filterCategory = function() {
+    $('#select-category').on('click', function() {
+      var dataCategoryId = $(this).val();
+
+      $.ajax({
+        url: url.filterCategory,
+        type: 'POST',
+        data: {
+          categoryId: dataCategoryId
+        }
+      })
+      .done(function(data) {
+        $('#expense-list').html(data);
+      });
+    });
+  }
+
+  this.filterCategoryDate = function() {
+    $('.expense-filter').on('click', '.filter', function() {
+      var dataCategoryId = $('#select-category').val();
+      var dataStart = $('#start').val();
+      var dataFinish = $('#finish').val();
+      
+      var formData = new FormData();
+      formData.append('categoryId', dataCategoryId);
+      formData.append('start', dataStart);
+      formData.append('finish', dataFinish);
+
+      $.ajax({
+        url: url.filterCategoryDate,
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false
+      })
+      .done(function(data) {
+        $('#expense-list').html(data);
       });
     });
   }

@@ -14,10 +14,11 @@ class ExpenseController extends Controller
     {
         $expenses = Expense::orderBy('id', 'desc')->get();
         $categories = Category::pluck('name', 'id');
+        $category_all = Category::all();
         $users = User::pluck('name', 'id');
 
         return view('expense.index', compact('expenses', 'categories', 
-            'users'));
+            'users', 'category_all'));
     }
 
     public function postAddAjax(ExpenseRequest $request)
@@ -54,5 +55,24 @@ class ExpenseController extends Controller
             
             return view('expense.list', compact('expenses'));
         }
+    }
+
+    public function postFilterCategory(Request $request)
+    {
+        $categoryId = $request->categoryId;
+
+        $expenses = Expense::filterByCategory($categoryId)->get();
+
+        return view('expense.list', compact('expenses'));
+    }
+
+    public function postFilterCategoryDate(Request $request)
+    {
+        $categoryId = $request->categoryId;
+        $start = $request->start;
+        $finish = $request->finish;
+        $expenses = Expense::filterCategoryDate($categoryId, $start, $finish)->get();
+
+        return view('expense.list', compact('expenses'));
     }
 }
