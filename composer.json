@@ -10,7 +10,8 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
-        "nesbot/carbon": "~1.21"
+        "nesbot/carbon": "~1.21",
+        "consoletvs/charts": "4.*"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

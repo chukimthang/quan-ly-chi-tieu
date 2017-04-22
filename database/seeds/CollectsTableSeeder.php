@@ -14,13 +14,13 @@ class CollectsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        foreach (range(1, 12) as $index) {
+        foreach (range(1, 50) as $index) {
             DB::table('collects')->insert([
                 'price' => $faker->numberBetween(100, 300) * 1000,
                 'created_at' => Carbon::createFromTimestamp(
-                    rand(strtotime('2017-02-1'), strtotime('2015-04-19')))
+                    rand(strtotime('2017-04-23'), strtotime('2016-01-01')))
                     ->format('Y-m-d h:i:s')
-        ]);
+            ]);
         }
     }
 }

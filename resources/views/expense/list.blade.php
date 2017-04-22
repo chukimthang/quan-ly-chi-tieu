@@ -15,10 +15,15 @@
                 <th width="8%">Xóa</th>
             </tr>
         </thead>
-
+        <?php 
+            $total = 0;
+        ?>
         <tbody id="expense-list" name="expense-list">
             @foreach ($expenses as $key => $expense)
                 <tr class="odd gradeX" align="center">
+                    <?php
+                        $total = $total + $expense->price; 
+                    ?>
                     <td>{!! $key + 1 !!}</td>
                     <td id="name-{!! $expense->id !!}">
                         {!! $expense->name !!}</td>
@@ -59,6 +64,12 @@
 @else
     <h4 align="center">Không có dữ liệu</h4>
 @endif
+
+<div class="total" style="margin-bottom: 50px;">
+    <h3 align="center">Tổng tiền: 
+        <span style="color: red;">{!! number_format($total) !!}</span> VNĐ
+    </h3>
+</div>
 
 <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatable.js') }}"></script>
