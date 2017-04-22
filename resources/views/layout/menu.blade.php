@@ -7,6 +7,9 @@
             <li>
                 <a href="{{ route('expense.index') }}">Chi tiêu</a>
             </li>
+            <li>
+                <a href="{{ route('collect.index') }}">Thu quỹ</a>
+            </li>
         </ul>
     </div>
 </div>
