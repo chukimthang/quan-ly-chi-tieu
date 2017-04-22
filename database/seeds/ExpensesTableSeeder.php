@@ -14,7 +14,7 @@ class ExpensesTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        foreach (range(1, 12) as $index) {
+        foreach (range(1, 200) as $index) {
             DB::table('expenses')->insert([
                 'name' => str_random(10),
                 'price' => $faker->numberBetween(10, 100) * 1000, 
@@ -22,7 +22,7 @@ class ExpensesTableSeeder extends Seeder
                 'category_id' => $faker->numberBetween(1, 7),
                 'user_id' => $faker->numberBetween(1, 3), 
                 'created_at' => Carbon::createFromTimestamp(
-                    rand(strtotime('2017-02-1'), strtotime('2015-04-19')))
+                    rand(strtotime('2017-04-23'), strtotime('2016-01-01')))
                     ->format('Y-m-d h:i:s')
             ]);
         }

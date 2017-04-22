@@ -79,6 +79,8 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'CollectController@postDeleteAjax'
         ]);
     });
+
+    Route::resource('chart', 'ChartController', ['only' => 'index']);
 });
 
 Auth::routes();
