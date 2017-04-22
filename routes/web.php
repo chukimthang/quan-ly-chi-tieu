@@ -19,6 +19,16 @@ Route::group(['middleware' => 'auth'], function() {
             'as' => 'index',
             'uses' => 'CategoryController@index'
         ]);
+
+        Route::post('addAjax', [
+            'as' => 'addAjax',
+            'uses' => 'CategoryController@postAddAjax'
+        ]);
+
+        Route::post('deleteAjax', [
+            'as' => 'deleteAjax',
+            'uses' => 'CategoryController@postDeleteAjax'
+        ]);
     });
 
     Route::group(['prefix' => 'expense', 'as' => 'expense.'], function() {

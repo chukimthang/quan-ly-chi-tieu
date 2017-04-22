@@ -55,7 +55,7 @@ function expense() {
   this.update = function() {
     var dataId;
 
-    $('.update').on('click', function() {
+    $('#expense-list').on('click', '.update', function() {
       dataId = $(this).data('id');
 
       var name = $(this).parent().prevAll('#name-' + dataId).html();

@@ -1,5 +1,5 @@
 <div class="modal fade create" tabindex="-1" role="dialog"
-    id="collect-create">
+    id="category-create">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +9,7 @@
                 </button>
 
                 <h3 class="modal-title title" align="center">
-                    Thu thêm quỹ
+                    Thêm chuyên mục
                 </h3>
             </div>
             
@@ -17,10 +17,10 @@
 
             <div class="modal-body form">
                 <div class="form-group">
-                    {!! Form::label('Tiền thu') !!}
-                    {!! Form::text('price', null, [
+                    {!! Form::label('Chuyên mục') !!}
+                    {!! Form::text('name', null, [
                         'class' => 'form-control',
-                        'id' => 'collect-price'
+                        'id' => 'category-name'
                     ]) !!}
                 </div>
             </div>
@@ -30,8 +30,7 @@
                     'class' => 'btn btn-default',
                     'data-dismiss' =>'modal'
                 ]) !!}
-                {!! Form::submit('Thêm', ['class' => 'btn btn-primary 
-                    btn-create']) !!}
+                {!! Form::submit('Thêm', ['class' => 'btn btn-primary']) !!}
             </div>
         </div>
     </div>
