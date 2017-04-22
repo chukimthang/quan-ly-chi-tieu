@@ -442,8 +442,8 @@ table.dataTable thead .sorting:after {
 }
 
 .modal .modal-body {
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .modal .modal-footer {
@@ -455,7 +455,7 @@ table.dataTable thead .sorting:after {
 }
 
 .form-error {
-   padding-left: 15%;
+   padding-left: 10%;
    padding-top: 10px;
    color: red;
 }

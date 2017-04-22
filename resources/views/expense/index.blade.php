@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}">
 <div id="page-wrapper">
     <div class="row">
-        <h3 class="page-header title">Chi Tiêu</h3> 
+        <h3 class="page-header">Chi Tiêu</h3> 
 
         <div class="col-lg-12">
             <h4 class="col-md-9">

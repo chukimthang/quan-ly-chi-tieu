@@ -3,15 +3,27 @@
 @section('content')
 <div id="page-wrapper">
     <div class="row">
-        <h3 class="page-header title" style="margin-left: 2%;">Chuyên mục</h3> 
+        <h3 class="page-header" style="margin-left: 2%;">Chuyên mục</h3> 
+        
+        <div class="col-lg-12">
+            <h4 class="col-md-9">
+                <a href="#" data-toggle="modal" 
+                    data-target="#category-create"
+                    class="add">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                    Thêm
+                </a>
+            </h4>
+        </div>
 
-        <div class="col-lg-11">
+        <div class="col-lg-12">
             @if (count($categories))
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
                             <th class="colum" width="10%">STT</th>
                             <th class="colum">Chuyên mục</th>
+                            <th class="colum" width="15%">Xóa</th>
                         </tr>
                     </thead>
 
@@ -19,8 +31,13 @@
                         @foreach ($categories as $key => $category)
                             <tr class="odd gradeX" align="center">
                                 <td>{!! $key + 1 !!}</td>
-                                <td id="category-name-{{ $category->id }}">
-                                    {!! $category->name !!}
+                                <td>{!! $category->name !!}</td>
+                                <td><a href="javascript:void(0)" 
+                                    data-id="{!! $category->id !!}" 
+                                    class="delete">
+                                    <span class="glyphicon
+                                        glyphicon-remove-sign">
+                                    </span></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -36,4 +53,15 @@
         </div>
     </div>
 </div>
+@include('category.create')
+
+<script src="{{ asset('js/category.js') }}"></script>
+<script type="text/javascript">
+    var url = {
+        'add': '{{ route('category.addAjax') }}',
+        'delete': '{{ route('category.deleteAjax') }}'
+    }
+    var category = new category;
+    category.init(url);
+</script>
 @stop

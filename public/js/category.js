@@ -1,7 +1,7 @@
-function collect() {
+function category() {
   var current = this;
 
-   this.init = function(url) {
+  this.init = function(url) {
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -12,18 +12,18 @@ function collect() {
   }
 
   this.add = function() {
-    $('#collect-create').on('click', '.btn.btn-primary', function() {
-      var dataPrice = $('#collect-price').val();
+    $('#category-create').on('click', '.btn.btn-primary', function() {
+      var dataName = $('#category-name').val();
       $.ajax({
         url: url.add,
         type: 'POST',
+        dataType: 'json',
         data: {
-          price: dataPrice
+          name: dataName
         }
       })
       .done(function(data) {
         swal("Đã thêm!", "Thêm thành công", "success");
-        $('#collect-all').html(data);
         $('.modal').modal('hide');
       })
       .fail(function(data) {
@@ -38,7 +38,7 @@ function collect() {
   }
 
   this.delete = function() {
-    $('#collect-all').on('click', '.delete', function() {
+    $('#category-list').on('click', '.delete', function() {
       var dataId = $(this).data('id');
       $.ajax({
         url: url.delete,
@@ -47,9 +47,8 @@ function collect() {
           id: dataId
         }
       })
-      .done(function(data) {
-        swal("Đã xóa!", "Xóa thành công", "success");
-        $('#collect-all').html(data);
+      .done(function() {
+        swal("Đã Xóa!", "Xóa thành công", "success");
       });
       $(this).parent().parent().remove();
     });
