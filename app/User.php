@@ -29,6 +29,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function scopeGetAdmin($query)
+    {
+        return $query->where('is_admin', 1)->first();
+    }
+
     public function activity()
     {
         return $this->hasMany(Activity::class);

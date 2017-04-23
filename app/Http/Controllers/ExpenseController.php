@@ -16,19 +16,27 @@ class ExpenseController extends Controller
         $categories = Category::pluck('name', 'id');
         $category_all = Category::all();
         $users = User::pluck('name', 'id');
+        $userAdmin = User::getAdmin();
 
         return view('expense.index', compact('expenses', 'categories', 
-            'users', 'category_all'));
+            'users', 'category_all', 'userAdmin'));
     }
 
     public function postAddAjax(ExpenseRequest $request)
     {
         $data = $request->only('name', 'price', 'category_id', 
             'user_id', 'description');
-        Expense::create($data);
+        $expense = Expense::create($data);
         $expenses = Expense::orderBy('id', 'desc')->get();
 
-        return view('expense.list', compact('expenses'));
+        $user = User::getAdmin();
+        $user->total_money -= $expense->price;
+        $user->update([
+            'total_money' => $user->total_money
+        ]);
+        $userAdmin = User::getAdmin();
+
+        return view('expense.list', compact('expenses', 'userAdmin'));
     }
 
     public function postUpdateAjax(ExpenseRequest $request)
@@ -38,10 +46,18 @@ class ExpenseController extends Controller
             $data = $request->only('name', 'price', 'category_id', 
                 'user_id', 'description');
             $expense = Expense::find($id);
+            $oldPrice = $expense->price;
             $expense->update($data);
             $expenses = Expense::orderBy('id', 'desc')->get();
+            
+            $user = User::getAdmin();
+            $user->total_money = $user->total_money + $oldPrice - $expense->price;
+            $user->update([
+                'total_money' => $user->total_money
+            ]);
+            $userAdmin = User::getAdmin();
 
-            return view('expense.list', compact('expenses'));
+            return view('expense.list', compact('expenses', 'userAdmin'));
         }
     }
 
@@ -52,8 +68,15 @@ class ExpenseController extends Controller
             $expense = Expense::find($id);
             $expense->delete();
             $expenses = Expense::orderBy('id', 'desc')->get();
+
+            $user = User::getAdmin();
+            $user->total_money += $expense->price;
+            $user->update([
+                'total_money' => $user->total_money
+            ]);
+            $userAdmin = User::getAdmin();
             
-            return view('expense.list', compact('expenses'));
+            return view('expense.list', compact('expenses', 'userAdmin'));
         }
     }
 
@@ -62,8 +85,9 @@ class ExpenseController extends Controller
         $categoryId = $request->categoryId;
 
         $expenses = Expense::filterByCategory($categoryId)->get();
+        $userAdmin = User::getAdmin();
 
-        return view('expense.list', compact('expenses'));
+        return view('expense.list', compact('expenses', 'userAdmin'));
     }
 
     public function postFilterCategoryDate(Request $request)
@@ -71,8 +95,10 @@ class ExpenseController extends Controller
         $categoryId = $request->categoryId;
         $start = $request->start;
         $finish = $request->finish;
-        $expenses = Expense::filterCategoryDate($categoryId, $start, $finish)->get();
+        $expenses = Expense::filterCategoryDate($categoryId, $start, $finish)
+            ->get();
+        $userAdmin = User::getAdmin();
 
-        return view('expense.list', compact('expenses'));
+        return view('expense.list', compact('expenses', 'userAdmin'));
     }
 }

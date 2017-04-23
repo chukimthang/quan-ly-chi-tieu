@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'chukimthang94@gmail.com',
             'password' => bcrypt('123456'),
             'avatar' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSWXoGSJC7rKeQjngG-7dfU03Aa7vZ9V0kcBPOuiFc0ltTMmUQg',  
-            'is_admin' => 1
+            'is_admin' => 1,
+            'total_money' => 0
         ]);
 
         DB::table('users')->insert([
@@ -24,7 +25,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'loi@gmail.com',
             'password' => bcrypt('123456'),
             'avatar' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSWXoGSJC7rKeQjngG-7dfU03Aa7vZ9V0kcBPOuiFc0ltTMmUQg',  
-            'is_admin' => 0
+            'is_admin' => 0,
+            'total_money' => 0
         ]);
 
         DB::table('users')->insert([
@@ -32,7 +34,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'phu@gmail.com',
             'password' => bcrypt('123456'),
             'avatar' => 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSWXoGSJC7rKeQjngG-7dfU03Aa7vZ9V0kcBPOuiFc0ltTMmUQg',  
-            'is_admin' => 0
+            'is_admin' => 0,
+            'total_money' => 0
         ]);
     }
 }

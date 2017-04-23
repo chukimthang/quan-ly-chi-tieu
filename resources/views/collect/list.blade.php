@@ -36,8 +36,17 @@
     </table>
 
     <div class="total">
-        <h3 align="center">Tổng tiền: 
+        <h4 align="center">Tổng tiền: 
             <span class="total-money">{!! number_format($total) !!}</span> VNĐ
+        </h4>
+    </div>
+
+    <div class="current-money">
+        <h3 align="right">Tiền quỹ hiện tại:
+            <span class="total-money">
+                {!! number_format($userAdmin->total_money) !!}
+            </span>
+            VNĐ
         </h3>
     </div>
 @else
