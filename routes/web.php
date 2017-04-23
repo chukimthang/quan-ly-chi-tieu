@@ -25,6 +25,11 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'CategoryController@postAddAjax'
         ]);
 
+        Route::post('updateAjax', [
+            'as' => 'updateAjax',
+            'uses' => 'CategoryController@postUpdateAjax'
+        ]);
+
         Route::post('deleteAjax', [
             'as' => 'deleteAjax',
             'uses' => 'CategoryController@postDeleteAjax'

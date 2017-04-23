@@ -23,7 +23,8 @@
                         <tr>
                             <th class="colum" width="10%">STT</th>
                             <th class="colum">Chuyên mục</th>
-                            <th class="colum" width="15%">Xóa</th>
+                            <th class="colum" width="10%">Sửa</th>
+                            <th class="colum" width="10%">Xóa</th>
                         </tr>
                     </thead>
 
@@ -31,7 +32,19 @@
                         @foreach ($categories as $key => $category)
                             <tr class="odd gradeX" align="center">
                                 <td>{!! $key + 1 !!}</td>
-                                <td>{!! $category->name !!}</td>
+                                <td id="name-{!! $category->id !!}">
+                                    {!! $category->name !!}
+                                </td>
+                                <td class="center">
+                                    <a href="javascript:void(0)" 
+                                        data-toggle="modal"
+                                        data-target="#category-edit"
+                                        data-id="{!! $category->id !!}" 
+                                        class="update">
+                                        <span class="glyphicon glyphicon-edit">
+                                        </span>
+                                    </a>
+                                </td>
                                 <td><a href="javascript:void(0)" 
                                     data-id="{!! $category->id !!}" 
                                     class="delete">
@@ -53,12 +66,15 @@
         </div>
     </div>
 </div>
+
 @include('category.create')
+@include('category.edit')
 
 <script src="{{ asset('js/category.js') }}"></script>
 <script type="text/javascript">
     var url = {
         'add': '{{ route('category.addAjax') }}',
+        'update': '{{ route('category.updateAjax') }}',
         'delete': '{{ route('category.deleteAjax') }}'
     }
     var category = new category;
