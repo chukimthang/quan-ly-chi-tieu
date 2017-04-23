@@ -35,4 +35,13 @@ class CollectController extends Controller
             return view('collect.list', compact('collects'));
         }
     }
+
+    public function postFilterDate(Request $request)
+    {
+        $start = $request->start;
+        $finish = $request->finish;
+        $collects = Collect::filterDate($start, $finish)->get();
+
+        return view('collect.list', compact('collects'));
+    }
 }

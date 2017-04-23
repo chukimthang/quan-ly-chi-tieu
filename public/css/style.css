@@ -464,3 +464,15 @@ table.expense-filter {
     margin-bottom: 20px;
     margin-top: 10px;
 }
+
+.collect-filter {
+    margin-bottom: 3%;
+}
+
+.total-money {
+    color: red;
+}
+
+div.total {
+    margin-bottom: 50px;
+}

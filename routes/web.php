@@ -78,6 +78,11 @@ Route::group(['middleware' => 'auth'], function() {
             'as' => 'deleteAjax',
             'uses' => 'CollectController@postDeleteAjax'
         ]);
+
+        Route::post('filterDate', [
+            'as' => 'filterDate',
+            'uses' => 'CollectController@postFilterDate'
+        ]);
     });
 
     Route::resource('chart', 'ChartController', ['only' => 'index']);
