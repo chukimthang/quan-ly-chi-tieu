@@ -9,6 +9,7 @@ function collect() {
     });
     current.add();
     current.delete();
+    current.filter();
   }
 
   this.add = function() {
@@ -52,6 +53,25 @@ function collect() {
         $('#collect-all').html(data);
       });
       $(this).parent().parent().remove();
+    });
+  }
+
+  this.filter = function() {
+    $('#collect-filter').on('click', '.filter', function() {
+      var dataStart = $('#start').val();
+      var dataFinish = $('#finish').val();
+      
+      $.ajax({
+        url: url.filter,
+        type: 'POST',
+        data: {
+          start: dataStart,
+          finish: dataFinish 
+        }
+      })
+      .done(function(data) {
+        $('#collect-all').html(data);
+      });
     });
   }
 }

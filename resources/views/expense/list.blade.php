@@ -65,9 +65,9 @@
     <h4 align="center">Không có dữ liệu</h4>
 @endif
 
-<div class="total" style="margin-bottom: 50px;">
+<div class="total">
     <h3 align="center">Tổng tiền: 
-        <span style="color: red;">{!! number_format($total) !!}</span> VNĐ
+        <span class="total-money">{!! number_format($total) !!}</span> VNĐ
     </h3>
 </div>
 

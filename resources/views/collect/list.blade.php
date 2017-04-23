@@ -11,10 +11,15 @@
                 <th class="colum">Xóa</th>
             </tr>
         </thead>
-
+        <?php 
+            $total = 0;
+        ?>
         <tbody id="collect-list" name="collect-list">
             @foreach ($collects as $key => $collect)
                 <tr class="odd gradeX" align="center">
+                    <?php 
+                        $total = $total + $collect->price;
+                    ?>
                     <td>{!! $key + 1 !!}</td>
                     <td>{!! number_format($collect->price) !!}</td>
                     <td>{!! $collect->created_at !!}</td>
@@ -29,6 +34,12 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="total">
+        <h3 align="center">Tổng tiền: 
+            <span class="total-money">{!! number_format($total) !!}</span> VNĐ
+        </h3>
+    </div>
 @else
     <h4 align="center">Không có dữ liệu</h4>
 @endif
