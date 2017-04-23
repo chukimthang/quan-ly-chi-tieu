@@ -38,8 +38,8 @@ function expense() {
       })
       .done(function(data) {
         swal("Đã thêm!", "Thêm thành công", "success");
-        $('#expense-list').html(data);
         $('.modal').modal('hide');
+        $('#expense-list').html(data);
       })
       .fail(function(data) {
         var errors = '';

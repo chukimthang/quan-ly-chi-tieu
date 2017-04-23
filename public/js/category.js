@@ -8,6 +8,7 @@ function category() {
       }
     });
     current.add();
+    current.update();
     current.delete();
   }
 
@@ -34,6 +35,40 @@ function category() {
         }
         $('.form-error').show().html(errors);
       });
+    });
+  }
+
+  this.update = function() {
+    var dataId;
+    $('#category-list').on('click', '.update', function() {
+      dataId = $(this).data('id');
+      var name = $('#name-' + dataId).html();
+      $('#edit-name').val($.trim(name));
+    });
+
+    $('#category-edit').on('click', '.btn.btn-primary', function() {
+      $.ajax({
+        url: url.update,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          id: dataId,
+          name: $('#edit-name').val()
+        }
+      })
+      .done(function() {
+        swal("Đã Cập Nhật!", "Cập nhật thành công", "success");
+        $('.modal').modal('hide');
+      })
+      .fail(function(data) {
+        var errors = '';
+        $('.form-error').html('');
+        for(datos in data.responseJSON){
+          errors += data.responseJSON[datos] + '<br>';
+        }
+        $('.form-error').show().html(errors);
+      });
+      $('#name-' + dataId).html($('#edit-name').val());
     });
   }
 

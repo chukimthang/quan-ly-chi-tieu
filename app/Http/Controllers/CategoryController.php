@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Category;
 
 class CategoryController extends Controller
@@ -21,6 +22,18 @@ class CategoryController extends Controller
         Category::create($data);
 
         return response()->json(['status' => 200]);
+    }
+
+    public function postUpdateAjax(CategoryUpdateRequest $request)
+    {
+        $id = $request->id;
+        if ($id) {
+            $data = $request->only('name');
+            $category = Category::find($id);
+            $category->update($data);
+
+            return response()->json(['status' => 200]);
+        }
     }
 
     public function postDeleteAjax(Request $request)
