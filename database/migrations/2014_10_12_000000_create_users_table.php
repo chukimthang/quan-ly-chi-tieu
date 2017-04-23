@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar');
             $table->boolean('is_admin');
+            $table->float('total_money', 10, 2)->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

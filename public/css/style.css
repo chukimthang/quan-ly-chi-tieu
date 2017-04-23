@@ -474,5 +474,9 @@ table.expense-filter {
 }
 
 div.total {
+    margin-bottom: 20px;
+}
+
+div.current-money {
     margin-bottom: 50px;
 }

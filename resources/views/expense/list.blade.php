@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-dt/css/jquery.dataTables.min.css') }}">
+
 @if (count($expenses))
     <table class="table table-striped table-bordered table-hover" 
         id="dataTables-example">
@@ -61,15 +62,24 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="total">
+        <h4 align="center">Tổng tiền: 
+            <span class="total-money">{!! number_format($total) !!}</span> VNĐ
+        </h4>
+    </div>
+
+    <div class="current-money">
+        <h3 align="right">Tiền quỹ hiện tại:
+            <span class="total-money">
+                {!! number_format($userAdmin->total_money) !!}
+            </span>
+            VNĐ
+        </h3>
+    </div>
 @else
     <h4 align="center">Không có dữ liệu</h4>
 @endif
-
-<div class="total">
-    <h3 align="center">Tổng tiền: 
-        <span class="total-money">{!! number_format($total) !!}</span> VNĐ
-    </h3>
-</div>
 
 <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatable.js') }}"></script>
