@@ -93,6 +93,29 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('activity', 'ActivityController', ['only' => 'index']);
 
     Route::resource('chart', 'ChartController', ['only' => 'index']);
+
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
+
+        Route::get('showProfile', [
+            'as' => 'showProfile',
+            'uses' => 'UserController@showProfile'
+        ]);
+
+        Route::get('editProfile', [
+            'as' => 'editProfile',
+            'uses' => 'UserController@getEditProfile'
+        ]);
+
+        Route::post('uploadAvatar', [
+            'as' => 'uploadAvatar',
+            'uses' => 'UserController@postUpdateAvatar'
+        ]);
+
+        Route::post('updateProfile', [
+            'as' => 'updateProfile',
+            'uses' => 'UserController@postUpdateProfile'
+        ]);
+    });
 });
 
 Auth::routes();

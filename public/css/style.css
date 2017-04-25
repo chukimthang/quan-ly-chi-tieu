@@ -492,7 +492,7 @@ span.user-name {
 }
 
 span.time {
-    color: blue;
+    color: black;
 }
 
 div.activity {
@@ -503,6 +503,40 @@ h3.title-activity {
     padding-left: 3%;
 }
 
-.activity h5 a{
+.activity h5 a {
     margin-left: 10px;
+}
+
+.table-profile-show {
+    margin-left: 20%;
+}
+
+.table-profile-show label.profile-show {
+    font-weight: bold;
+}
+
+.change-infor {
+    margin-top: 20px;
+}
+
+.change-infor a {
+    text-decoration: underline;
+}
+
+h3.edit-profile {
+    margin-left: 35%;
+}
+
+#upload-avatar {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.submit-update-profile {
+    margin-left: 40%;
+}
+
+.form-error-profile {
+    margin-bottom: 10px;
+    color: red;
 }

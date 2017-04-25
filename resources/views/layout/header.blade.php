@@ -20,10 +20,15 @@
 
                 <ul class="dropdown-menu" role="menu">
                     <li>
+                        <a href="{{ route('user.showProfile') }}">
+                            Hồ sơ
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                            Logout
+                            Đăng xuất
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}"
