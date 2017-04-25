@@ -12,8 +12,10 @@
                 <th class="colum">Người tiêu</th>
                 <th hidden="true">Mô tả</th>
                 <th class="colum">Thời gian</th>
-                <th width="8%">Sửa</th>
-                <th width="8%">Xóa</th>
+                @if(Auth::user()->is_admin == 1)
+                    <th width="8%">Sửa</th>
+                    <th width="8%">Xóa</th>
+                @endif
             </tr>
         </thead>
         <?php 
@@ -40,24 +42,26 @@
                         {!! $expense->description !!}
                     </td>
                     <td>{!! $expense->created_at !!}</td>
-                    <td class="center">
-                        <a href="#" data-toggle="modal"
-                            data-target=".bs-example-modal-lg.edit"
-                            data-id="{!! $expense->id !!}" 
-                            class="update">
-                            <span class="glyphicon glyphicon-edit">
-                            </span>
-                        </a>
-                    </td>
-                    <td class="colum">
-                        <a href="javascript:void(0)" 
-                            data-id="{!! $expense->id !!}" 
-                            class="delete">
-                            <span class="glyphicon
-                                glyphicon-remove-sign">
-                            </span>
-                        </a>
-                    </td>
+                    @if(Auth::user()->is_admin)
+                        <td class="center">
+                            <a href="#" data-toggle="modal"
+                                data-target=".bs-example-modal-lg.edit"
+                                data-id="{!! $expense->id !!}" 
+                                class="update">
+                                <span class="glyphicon glyphicon-edit">
+                                </span>
+                            </a>
+                        </td>
+                        <td class="colum">
+                            <a href="javascript:void(0)" 
+                                data-id="{!! $expense->id !!}" 
+                                class="delete">
+                                <span class="glyphicon
+                                    glyphicon-remove-sign">
+                                </span>
+                            </a>
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

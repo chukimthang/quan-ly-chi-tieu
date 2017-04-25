@@ -8,7 +8,9 @@
                 <th class="colum" width="10%">STT</th>
                 <th class="colum">Tiền thu (VNĐ)</th>
                 <th class="colum">Ngày thu</th>
-                <th class="colum">Xóa</th>
+                @if(Auth::user()->is_admin == 1)
+                    <th class="colum">Xóa</th>
+                @endif
             </tr>
         </thead>
         <?php 
@@ -23,13 +25,15 @@
                     <td>{!! $key + 1 !!}</td>
                     <td>{!! number_format($collect->price) !!}</td>
                     <td>{!! $collect->created_at !!}</td>
-                    <td><a href="javascript:void(0)" 
-                        data-id="{!! $collect->id !!}" 
-                        class="delete">
-                        <span class="glyphicon
-                            glyphicon-remove-sign">
-                        </span>
-                    </a></td>
+                    @if (Auth::user()->is_admin)
+                        <td><a href="javascript:void(0)" 
+                            data-id="{!! $collect->id !!}" 
+                            class="delete">
+                            <span class="glyphicon
+                                glyphicon-remove-sign">
+                            </span>
+                        </a></td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

@@ -14,7 +14,8 @@ Route::get('/', ['as' => 'login', 'uses' => 'HomeController@index']);
 
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::group(['prefix' => 'category', 'as' => 'category.'], function() {
+    Route::group(['prefix' => 'category', 'as' => 'category.', 
+        'middleware' => 'admin'], function() {
         Route::get('/', [
             'as' => 'index',
             'uses' => 'CategoryController@index'
