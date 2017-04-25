@@ -11,6 +11,9 @@
                 <a href="{{ route('collect.index') }}">Thu quỹ</a>
             </li>
             <li>
+                <a href="{{ route('activity.index') }}">Hoạt động</a>
+            </li>
+            <li>
                 <a href="{{ route('chart.index') }}">Biểu đồ</a>
             </li>
         </ul>

@@ -90,6 +90,8 @@ Route::group(['middleware' => 'auth'], function() {
         ]);
     });
 
+    Route::resource('activity', 'ActivityController', ['only' => 'index']);
+
     Route::resource('chart', 'ChartController', ['only' => 'index']);
 });
 

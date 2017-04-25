@@ -7,6 +7,8 @@ use App\Http\Requests\ExpenseRequest;
 use App\Expense;
 use App\Category;
 use App\User;
+use App\Activity;
+use Auth;
 
 class ExpenseController extends Controller
 {
@@ -36,6 +38,12 @@ class ExpenseController extends Controller
         ]);
         $userAdmin = User::getAdmin();
 
+        Activity::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'thêm chi tiêu',
+            'target_id' => $expense->id
+        ]);
+
         return view('expense.list', compact('expenses', 'userAdmin'));
     }
 
@@ -57,6 +65,12 @@ class ExpenseController extends Controller
             ]);
             $userAdmin = User::getAdmin();
 
+            Activity::create([
+                'user_id' => Auth::user()->id,
+                'action' => 'sửa chi tiêu',
+                'target_id' => $expense->id
+            ]);
+
             return view('expense.list', compact('expenses', 'userAdmin'));
         }
     }
@@ -75,6 +89,12 @@ class ExpenseController extends Controller
                 'total_money' => $user->total_money
             ]);
             $userAdmin = User::getAdmin();
+
+            Activity::create([
+                'user_id' => Auth::user()->id,
+                'action' => 'xóa chi tiêu',
+                'target_id' => $expense->id
+            ]);
             
             return view('expense.list', compact('expenses', 'userAdmin'));
         }

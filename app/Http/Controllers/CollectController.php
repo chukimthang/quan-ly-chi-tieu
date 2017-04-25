@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CollectRequest;
 use App\Collect;
 use App\User;
+use App\Activity;
+use Auth;
 
 class CollectController extends Controller
 {
@@ -30,6 +32,12 @@ class CollectController extends Controller
         ]);
         $userAdmin = User::getAdmin();
 
+        Activity::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'thêm thu quỹ',
+            'target_id' => $collect->id
+        ]);
+
         return view('collect.list', compact('collects', 'userAdmin'));
     }
 
@@ -47,6 +55,12 @@ class CollectController extends Controller
                 'total_money' => $user->total_money
             ]);
             $userAdmin = User::getAdmin();
+
+            Activity::create([
+                'user_id' => Auth::user()->id,
+                'action' => 'xóa thu quỹ',
+                'target_id' => $collect->id
+            ]);
 
             return view('collect.list', compact('collects', 'userAdmin'));
         }
