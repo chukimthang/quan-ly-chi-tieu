@@ -9,17 +9,17 @@
             @foreach ($activities as $activity)
                 <h5><img src="{!! App\User::getUser($activity->user_id)
                     ->avatar !!}" width="50px" height="50px">
-                <a>
-                    @lang('activity.action', [
-                        'fullname' => "<span class='user-name'>" .
-                            App\User::getUser($activity->user_id)->name . 
-                            "</span>",
-                        'name' => "<span class='action'>$activity->action
-                            </span>",
-                        'time' => "<span class='time'>$activity->created_at
-                            </span>"
-                    ])
-                </a></h5>
+                    <a>
+                        @lang('activity.action', [
+                            'fullname' => "<span class='user-name'>" .
+                                App\User::getUser($activity->user_id)->name . 
+                                "</span>",
+                            'name' => "<span class='action'>$activity->action
+                                </span>",
+                            'time' => "<span class='time'>$activity->created_at
+                                </span>"
+                        ])
+                    </a></h5>
                 <br>
             @endforeach
 

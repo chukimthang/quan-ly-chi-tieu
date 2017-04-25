@@ -11,7 +11,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "nesbot/carbon": "~1.21",
-        "consoletvs/charts": "4.*"
+        "consoletvs/charts": "4.*",
+        "ptcong/php-image-uploader": "^6.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
