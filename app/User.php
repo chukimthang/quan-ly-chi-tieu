@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $query->where('is_admin', 1)->first();
     }
 
+    public function scopeGetUser($query, $id)
+    {
+        return $query->where('id', $id)->first();
+    }
+
     public function activity()
     {
         return $this->hasMany(Activity::class);

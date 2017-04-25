@@ -480,3 +480,29 @@ div.total {
 div.current-money {
     margin-bottom: 50px;
 }
+
+span.action {
+    color: red;
+    font-weight: bold;
+}
+
+span.user-name {
+    color: blue;
+    font-weight: bold;
+}
+
+span.time {
+    color: blue;
+}
+
+div.activity {
+    padding-left: 3%;
+}
+
+h3.title-activity {
+    padding-left: 3%;
+}
+
+.activity h5 a{
+    margin-left: 10px;
+}
