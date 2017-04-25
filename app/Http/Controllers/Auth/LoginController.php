@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/category';
+    protected $redirectTo = '/expense';
 
     /**
      * Create a new controller instance.
@@ -46,7 +46,7 @@ class LoginController extends Controller
             'password' => $request->input('password')
         ])) {
 
-            return redirect('/category');
+            return redirect('/expense');
         }
         return back()->with('warning', 'Lỗi đăng nhập');
     }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Expense;
 use App\Category;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,8 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id', 'desc')->paginate(5);
+        $expenses = Expense::orderBy('id', 'desc')->get();
+        $categories = Category::pluck('name', 'id');
+        $category_all = Category::all();
+        $users = User::pluck('name', 'id');
+        $userAdmin = User::getAdmin();
 
-        return view('category.index', compact('categories'));
+        return view('expense.index', compact('expenses', 'categories', 
+            'users', 'category_all', 'userAdmin'));
     }
 }
