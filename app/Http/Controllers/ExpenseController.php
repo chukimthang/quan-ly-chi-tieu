@@ -28,11 +28,16 @@ class ExpenseController extends Controller
     {
         $data = $request->only('name', 'price', 'category_id', 
             'user_id', 'description');
-        $expense = Expense::create($data);
-        $expenses = Expense::orderBy('id', 'desc')->get();
-
         $user = User::getAdmin();
-        $user->total_money -= $expense->price;
+        
+        if ($data['price'] > $user->total_money) {
+            return 'fails';
+        }
+
+        Expense::create($data);
+
+        $expenses = Expense::orderBy('id', 'desc')->get();
+        $user->total_money -= $data['price'];
         $user->update([
             'total_money' => $user->total_money
         ]);
