@@ -37,9 +37,13 @@ function expense() {
         processData: false,
       })
       .done(function(data) {
-        swal("Đã thêm!", "Thêm thành công", "success");
-        $('.modal').modal('hide');
-        $('#expense-list').html(data);
+        if (data == 'fails') {
+          alert('Số tiền mua của bạn lớn hơn số tiền hiện có');
+        } else {
+          swal("Đã thêm!", "Thêm thành công", "success");
+          $('.modal').modal('hide');
+          $('#expense-list').html(data);
+        }
       })
       .fail(function(data) {
         var errors = '';
